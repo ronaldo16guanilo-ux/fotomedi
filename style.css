@@ -1,0 +1,197 @@
+/* --- Fuentes y Estilos Globales --- */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    /* --- FONDO GRADIENTE --- */
+    background-color: #e9f5f2; /* Color de respaldo */
+    background-image: linear-gradient(170deg, #e6f0ff 0%, #e9f5f2 100%);
+    min-height: 100vh;
+    display: grid;
+    place-items: center;
+    padding: 20px;
+}
+
+/* --- Contenedor Principal de la App --- */
+.app-container {
+    width: 100%;
+    max-width: 540px;
+    background: #ffffff;
+    border-radius: 24px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+    overflow: hidden;
+    border: 1px solid #E5E7EB;
+}
+
+/* --- Cabecera --- */
+.header {
+    background: linear-gradient(135deg, #4A90E2, #50E3C2);
+    color: #fff;
+    padding: 24px 20px;
+    text-align: center;
+}
+
+.header h1 {
+    font-size: 26px;
+    font-weight: 600;
+    margin: 0;
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    justify-content: center;
+}
+
+.header p {
+    margin: 8px 0 0;
+    font-size: 14px;
+    opacity: .9;
+}
+
+.pill-icon {
+    width: 32px;
+    height: 32px;
+    background: url('data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 fill=%22white%22 viewBox=%220 0 24 24%22%3E%3Cpath d=%22M4.22 11.29l6.5-6.5a4 4 0 0 1 5.66 0a4 4 0 0 1 0 5.66l-6.5 6.5a4 4 0 0 1-5.66 0a4 4 0 0 1 0-5.66z%22/%3E%3Cpath d=%22M13.41 10L17 13.59a2 2 0 0 1 0 2.83a2 2 0 0 1-2.83 0L10.59 13a2 2 0 0 1 0-2.83a2 2 0 0 1 2.83 0z%22/%3E%3C/svg%3E') center/contain no-repeat;
+    display: inline-block;
+}
+
+/* --- Vistas y Transiciones --- */
+.view {
+    display: none;
+    padding: 24px;
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+.view.active {
+    display: block;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* --- Zona de Carga de Archivos --- */
+.upload-row {
+    border: 2px dashed #D1D5DB;
+    padding: 24px;
+    border-radius: 16px;
+    text-align: center;
+    background-color: #F9FAFB;
+}
+
+input[type="file"] { color: transparent; }
+input[type="file"]::-webkit-file-upload-button { visibility: hidden; }
+input[type="file"]::before {
+    content: 'Seleccionar archivo del dispositivo';
+    font-family: 'Poppins', sans-serif;
+    display: inline-block;
+    background: #ffffff;
+    color: #4B5563;
+    border: 1px solid #D1D5DB;
+    padding: 12px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: all 0.2s ease;
+    width: 100%;
+}
+input[type="file"]:hover::before {
+    background-color: #F9FAFB;
+    border-color: #9CA3AF;
+}
+
+/* --- Botones --- */
+.btn {
+    padding: 12px 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    border: none;
+    font-size: 16px;
+    font-weight: 500;
+    font-family: 'Poppins', sans-serif;
+    transition: all 0.2s ease-in-out;
+    width: 100%;
+}
+
+.btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.btn-primary { background: #4A90E2; color: #fff; }
+.btn-primary:hover { background: #357ABD; }
+.btn-secondary { background: #6B7280; color: #fff; }
+.btn-secondary:hover { background: #4B5563; }
+
+.action-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 20px;
+}
+
+/* --- ESTILOS PARA MENSAJE DE ESTADO --- */
+.status {
+    margin-top: 16px;
+    font-size: 14px;
+    color: #059669; /* Verde para éxito */
+    text-align: center;
+    font-weight: 500;
+    background-color: #D1FAE5; /* Fondo verde claro */
+    padding: 10px;
+    border-radius: 8px;
+    opacity: 0; /* Oculto por defecto */
+    transition: opacity 0.4s ease-in-out;
+    height: 0;
+    overflow: hidden;
+    /* Estilos para el estado de "analizando" */
+    color: #1d4ed8;
+    background-color: #dbeafe;
+}
+
+.status.visible {
+    opacity: 1; /* Se hace visible con JS */
+    height: auto;
+}
+/* Estilos para confirmación de imagen */
+.status.confirm {
+    color: #059669;
+    background-color: #D1FAE5;
+}
+
+
+/* --- Pantalla de Resultados --- */
+.result-container { text-align: center; }
+.success-icon {
+    font-size: 52px;
+    margin: 0 auto 16px;
+    width: 80px;
+    height: 80px;
+    display: grid;
+    place-items: center;
+    background-color: #D1FAE5;
+    color: #10B981;
+    border-radius: 50%;
+}
+.medicine-name { font-size: 28px; font-weight: 700; color: #1F2937; margin: 0; }
+.medicine-subtitle { font-size: 16px; color: #4A90E2; margin: 4px 0 24px; font-weight: 500; }
+
+/* --- Tarjetas de Información --- */
+.info-card { background: #F9FAFB; padding: 16px; border-radius: 12px; margin-top: 16px; text-align: left; border: 1px solid #E5E7EB; }
+.info-header { font-weight: 600; margin-bottom: 8px; color: #111827; font-size: 16px; }
+.info-list { margin: 0; padding-left: 20px; color: #4B5563; font-size: 14px; }
+.info-list li { margin-bottom: 6px; }
+#whatFor { color: #4B5563; font-size: 14px; }
+
+/* --- Vista de la Cámara --- */
+.camera-box { margin-top: 16px; background: #000; border-radius: 16px; overflow: hidden; position: relative; }
+.camera-box video { width: 100%; display: block; max-height: 360px; object-fit: cover; }
+.camera-box .action-buttons { position: absolute; bottom: 16px; left: 16px; right: 16px; background-color: rgba(0,0,0,0.4); padding: 10px; border-radius: 12px; flex-direction: row; }
+
+.hide { display: none !important; }

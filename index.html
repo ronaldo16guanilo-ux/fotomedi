@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>FotoMedi</title>
+  <link rel="icon" type="image/png" href="iconDoc.png" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+    <div class="app-container">
+        <header class="header">
+            <h1><span class="pill-icon"></span> FotoMedi</h1>
+            <p>Sube una foto del blíster o pastilla.</p>
+        </header>
+
+        <main>
+            <section id="up" class="view active">
+                <div class="upload-row">
+                    <input id="fileInput" type="file" accept="image/*" />
+                </div>
+                
+                <div class="action-buttons">
+                    <button id="openCam" class="btn btn-secondary">Abrir Cámara</button>
+                    <button id="sendBtn" class="btn btn-primary">Analizar</button>
+                </div>
+
+                <div id="status" class="status"></div>
+
+                <div id="camBox" class="camera-box" hidden>
+                    <video id="cam" autoplay playsinline></video>
+                    <div class="action-buttons">
+                        <button id="snap" class="btn btn-primary">Tomar foto</button>
+                        <button id="closeCam" class="btn btn-secondary">Cerrar cámara</button>
+                    </div>
+                    <canvas id="canvas" class="hide"></canvas>
+                </div>
+            </section>
+
+            <section id="result" class="view">
+                <div class="result-container">
+                    <div class="success-icon" id="ok" style="display:none">✔️</div>
+                    <h2 id="name" class="medicine-name">—</h2>
+                    <p id="strength" class="medicine-subtitle"></p>
+
+                    <div class="info-card">
+                        <div class="info-header">Uso general</div>
+                        <p id="whatFor">—</p>
+                    </div>
+
+                    <div class="info-card">
+                        <div class="info-header">Casos de uso</div>
+                        <ul id="useCases" class="info-list"></ul>
+                    </div>
+
+                    <div class="info-card">
+                        <div class="info-header">Advertencias comunes</div>
+                        <ul id="warn" class="info-list"></ul>
+                    </div>
+
+                    <div class="action-buttons">
+                        <button id="again" class="btn btn-secondary">Otra imagen</button>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+    
+  <script src="script.js"></script>
+</body>
+
+</html>
